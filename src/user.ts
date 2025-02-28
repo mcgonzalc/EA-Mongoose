@@ -1,19 +1,19 @@
 import { Schema, model } from 'mongoose';
 
-// 1. Create an interface representing a TS object.
 export interface IUser {
   name: string;
   email: string;
   avatar?: string;
+  posts?: Schema.Types.ObjectId[]; // Usamos ObjectId como referencia
   _id?: string;
 }
 
-// 2. Create a Schema corresponding to the document in MongoDB.
+// Definir el esquema de User con referencia a Post
 const userSchema = new Schema<IUser>({
   name: { type: String, required: true },
   email: { type: String, required: true },
-  avatar: String
+  avatar: String,
+  posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }] // Enlace a Post
 });
 
-// 3. Create a Model.
-export const UserModel = model('User', userSchema);
+export const UserModel = model<IUser>('User', userSchema);
