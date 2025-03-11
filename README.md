@@ -51,3 +51,7 @@ Ejecutar JS
 ```
 node dist/mongoogse.js
 ```
+
+## Fonts d'informació
+
+- [Perplexity.AI](https://perplexity.ai)
